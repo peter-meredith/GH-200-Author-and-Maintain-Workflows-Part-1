@@ -41,7 +41,7 @@ jobs:
                   name: my-generated-files
                   path: my_output/
     build-and-upload-artifact-without-file2:
-        if: !github.events.inputs.should_include_file2
+        if: ${{ ! github.events.inputs.should_include_file2 }}
         runs-on: ubuntu-latest
         steps:
             - name: Create some files
