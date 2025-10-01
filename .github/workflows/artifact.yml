@@ -7,7 +7,7 @@ jobs:
             - name: Create some files
               run: |
                   mkdir my_output
-                  echo "This is file content" > myoutput/file1.txt
+                  echo "This is file content" > my_output/file1.txt
                   echo "This is file2 content" > my_output/file2.txt
             - name: Upload artifact
               uses: actions/upload-artifact@v4
