@@ -1,14 +1,53 @@
 name: Simple Artifact Workflow
 on: workflow_dispatch
+inputs:
+    file_content1:
+        description: "Content for file1.txt"
+        type: string
+        required: true
+        default: "This is file content"
+    file_content2:
+        description: "Content for file2.txt"
+        required: true
+        type: choice
+        options:
+            - "This is file 2 content"
+            - "this is file 3 content"
+            - "Alpha bravo charlie"
+        default: "This is file2 content"
+    should_include_file2:
+        description: "Whether to include file2.txt"
+        required: true
+        type: boolean
+        default: true
+    env:
+        file1_content: ${{github.event.inputs.file_content1}}
+        file2_content: ${{github.event.inputs.file_content2}}
+        file1_path: "my_output/file1.txt"
+        file2_path: "my_output/file2.txt"
 jobs:
-    build-and-upload-artifact:
+    build-and-upload-artifact-with-file2:
+        if: github.events.inputs.should_include_file2
         runs-on: ubuntu-latest
         steps:
             - name: Create some files
               run: |
                   mkdir my_output
-                  echo "This is file content" > my_output/file1.txt
-                  echo "This is file2 content" > my_output/file2.txt
+                  echo ${{env.file1_content}} > ${{env.file1_path}}
+                  echo ${{env.file2_content}} > ${{env.file2.path}}
+            - name: Upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: my-generated-files
+                  path: my_output/
+    build-and-upload-artifact-without-file2:
+        if: !github.events.inputs.should_include_file2
+        runs-on: ubuntu-latest
+        steps:
+            - name: Create some files
+              run: |
+                  mkdir my_output
+                  echo ${{env.file1_content}} > ${{env.file1_path}}
             - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
