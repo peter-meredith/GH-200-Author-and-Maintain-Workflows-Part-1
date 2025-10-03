@@ -1,0 +1,21 @@
+name: output-Demo
+on: workflow_dispatch
+jobs:
+    create-output:
+        run-on: ubuntu-latest
+        outputs:
+            first-output: ${{ steps.first_step.outputs.test}}
+            second-output: ${{ steps.second_step.outputs.test}}
+        steps:
+            - id: first_step
+              run: echo "test=yankee" >> "$GITHUB_OUTPUT"
+            - id: second_step
+              run: echo "test=hotel" >> "$GITHUB_OUTPUT"
+    needs-output:
+        run-on: ubuntu-latest
+        needs: create-output
+        steps:
+            - env:
+                  first_output: ${{ needs.create-output.outputs.first_output }}
+                  second_output: ${{ needs.create-output.outputs.second_output }}
+              run: echo "$first_output $second_output"
