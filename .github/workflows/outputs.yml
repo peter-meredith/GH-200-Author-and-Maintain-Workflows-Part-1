@@ -16,6 +16,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - env:
-                  first_output: ${{ needs.create-output.outputs.first_output }}
-                  second_output: ${{ needs.create-output.outputs.second_output }}
+                  first_output: ${{ needs.create-output.outputs.first-output }}
+                  second_output: ${{ needs.create-output.outputs.second-output }}
               run: echo "$first_output $second_output"
