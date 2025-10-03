@@ -12,8 +12,8 @@ jobs:
             - id: second_step
               run: echo "test=hotel" >> "$GITHUB_OUTPUT"
     needs-output:
-        runs-on: ubuntu-latest
         needs: create-output
+        runs-on: ubuntu-latest
         steps:
             - env:
                   first_output: ${{ needs.create-output.outputs.first_output }}
