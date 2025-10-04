@@ -1,0 +1,8 @@
+name: run-scripts
+on: workflow_dispatch
+jobs:
+    run-script-job:
+        runs-on: ubuntu-latest
+        steps:
+            - id: run-script-step
+              run: sh ./scripts/my-script.sh
