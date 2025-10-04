@@ -11,4 +11,4 @@ jobs:
             - id: run-script-pwd
               run: pwd
             - id: run-script-step
-              run: sh ./scripts/my-script.sh
+              run: sh ./src/scripts/my-script.sh
