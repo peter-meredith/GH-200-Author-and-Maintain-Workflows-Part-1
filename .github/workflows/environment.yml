@@ -1,11 +1,11 @@
 name: environment
 on: workflow_dispatch
 env:
-    test_value: alpha
+    test-value: alpha
 jobs:
     print-details:
         env:
-            test_value: bravo
+            test-value: bravo
         runs-on: ubuntu-latest
         steps:
             - id: print-details
@@ -21,10 +21,10 @@ jobs:
                   echo "\$RUNNER_NAME $RUNNER_NAME"
                   echo "\$RUNNER_OS $RUNNER_OS"
             - id: print-test-value
-              run: echo test_value = ${{env.test_value}}
+              run: echo test-value = ${{env.test-value}}
             - id: set-test-value
               name: Set test-value2
               run: echo "test-value2=delta" >> "$GITHUB_ENV"
             - id: print-test-value2
               name: Print test-value2
-              run: echo "test value 2 = ${{toJson(env)}}"
+              run: echo "test value 2 = $test-value2"
