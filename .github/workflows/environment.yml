@@ -6,7 +6,7 @@ jobs:
     print-details:
         env:
             test_value: bravo
-        runs-on: ubuntu-linux
+        runs-on: ubuntu-latest
         steps:
             - id: print-details
               run: |
