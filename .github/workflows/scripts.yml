@@ -4,5 +4,7 @@ jobs:
     run-script-job:
         runs-on: ubuntu-latest
         steps:
+            - id: checkout
+              run: actions/checkout@v4
             - id: run-script-step
               run: sh ./scripts/my-script.sh
