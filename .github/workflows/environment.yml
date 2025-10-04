@@ -23,6 +23,8 @@ jobs:
             - id: print-test-value
               run: echo test_value = ${{env.test_value}}
             - id: set-test-value
+              name: Set test-value2
               run: echo "test-value2=delta" >> "$GITHUB_ENV"
             - id: print-test-value2
-              run: echo "test value 2 = $test_value2"
+              name: Print test-value2
+              run: echo "test value 2 = ${{env.test_value2}}"
