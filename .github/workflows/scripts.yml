@@ -7,8 +7,8 @@ jobs:
             - id: checkout
               uses: actions/checkout@v5
             - id: run-script-ls
-              run: sh l -otc
+              run: ls -otc
             - id: run-script-pwd
-              run: sh pwd
+              run: pwd
             - id: run-script-step
               run: sh ./scripts/my-script.sh
