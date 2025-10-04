@@ -1,0 +1,24 @@
+name: environment
+on: workflow_dispatch
+env:
+    test_value: alpha
+jobs:
+    print-details:
+        env:
+            test_value: bravo
+        runs-on: ubuntu-linux
+        steps:
+            - id: print-details
+              run: |
+                  echo "\$GITHUB_ACTION $GITHUB_ACTION"
+                  echo "\$GITHUB_EVENT_NAME $GITHUB_EVENT_NAME"
+                  echo "\$GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
+                  echo "\$GITHUB_REF_NAME $GITHUB_REF_NAME"
+                  echo "\$GITHUB_REPOSITORY $GITHUB_REPOSITORY"
+                  echo "\$GITHUB_WORKFLOW $GITHUB_WORKFLOW"
+                  echo "\$RUNNER_ARCH $RUNNER_ARCH"
+                  echo "\$RUNNER_ENVIRONMENT $RUNNER_ENVIRONMENT"
+                  echo "\$RUNNER_NAME $RUNNER_NAME"
+                  echo "\$RUNNER_OS $RUNNER_OS"
+            - id: print-test-value
+              run: echo test_value = ${{env.test_value}}
