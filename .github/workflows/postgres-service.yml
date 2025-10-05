@@ -23,7 +23,7 @@ jobs:
             - name: Show all files
               run: find ./.github -type f -exec echo {} \;
             - name: Connect to postgresql
-              run: node ./.github/services/postgres-test.js
+              run: node ./.github/services/postgres-test.cjs
               env:
                   POSTGRES_HOST: localhost
                   POSTGRES_PORT: 5432
