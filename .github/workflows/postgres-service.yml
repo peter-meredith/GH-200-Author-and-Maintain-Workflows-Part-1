@@ -20,6 +20,8 @@ jobs:
               uses: actions/checkout@v5
             - name: Install dependencies
               run: npm ci
+            - name: Show all files
+              run: find . -type f -exec echo {} \;
             - name: Connect to postgresql
               run: node ./.github/services/postgres-test.js
               env:
