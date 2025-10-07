@@ -1,0 +1,10 @@
+name: Matrix demonstration
+on: workflow_dispatch
+jobs:
+    DemoMatrix:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                color: ["red", "blue"]
+        steps:
+            - run: echo ${{matrix.color}}
