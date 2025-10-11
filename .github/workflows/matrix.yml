@@ -5,6 +5,13 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                color: ["red", "blue"]
+                color: ["green", "pink"]
+                animal: ["owl", "magpie"]
+                include:
+                    - color: blue
+                      animal: owl
+                    - color: pink
+                      animal: magpie
+
         steps:
             - run: echo ${{matrix.color}}
