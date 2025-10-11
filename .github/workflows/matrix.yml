@@ -12,7 +12,7 @@ jobs:
                       animal: owl
                     - color: pink
                       animal: magpie
-                exclued:
+                exclude:
                     - color: green
 
         steps:
