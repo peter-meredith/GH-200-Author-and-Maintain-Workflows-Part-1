@@ -12,6 +12,8 @@ jobs:
                       animal: owl
                     - color: pink
                       animal: magpie
+                exclued:
+                    - color: green
 
         steps:
             - run: echo ${{matrix.color}}
